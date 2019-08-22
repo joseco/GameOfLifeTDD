@@ -9,6 +9,8 @@ public class GameOfLife {
     }
 
     public void setCellStatus(int i, int j, boolean status){
+        if(i < 0 || i >= cells.length || j < 0 || j >= cells[i].length)
+            throw new IllegalArgumentException("Las posiciones son inválidas");
         cells[i][j] = status;
     }
 
