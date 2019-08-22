@@ -9,7 +9,7 @@ public class GameOfLife {
     }
 
     public void setCellStatus(int i, int j, boolean status){
-
+        cells[i][j] = status;
     }
 
     public boolean isAlive(int i, int j){
