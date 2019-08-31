@@ -23,6 +23,10 @@ public class GameOfLife {
     }
 
     public void play(){
-        
+        for (int i = 0; i < cells.length; i++) {
+            for (int j = 0; j < cells[i].length; j++) {
+                cells[i][j] =false;
+            }
+        }
     }
 }
