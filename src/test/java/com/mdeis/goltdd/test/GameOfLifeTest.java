@@ -21,14 +21,18 @@ public class GameOfLifeTest {
      */
     @Test(expected = IllegalArgumentException.class)
     public void simpleGameSetupWithNegativeParameters(){
-        GameOfLife game = new GameOfLife(-1, -1);
+        int rows = -1;
+        int cols = -1;
+        GameOfLife game = new GameOfLife(rows, cols);
     }
 
     @Test
     public void setupCellAsAlive(){
         //Se realiza la configuracion inicial del tablero
         //y se asgina un estado a una celula
-        GameOfLife game = new GameOfLife(1,1);
+        int rows = 1;
+        int cols = 1;
+        GameOfLife game = new GameOfLife(rows, cols);
         game.setCellStatus(0,0, true);
 
         boolean actual = game.isAlive(0,0);
@@ -42,7 +46,9 @@ public class GameOfLifeTest {
 
         //Se realiza la configuracion inicial del tablero
         //y se asgina un estado a una celula en una posicion invalida
-        GameOfLife game = new GameOfLife(1,1);
+        int rows = 1;
+        int cols = 1;
+        GameOfLife game = new GameOfLife(rows, cols);
         game.setCellStatus(-1,-1, true);
 
         boolean actual = game.isAlive(-1,-1);
@@ -57,7 +63,9 @@ public class GameOfLifeTest {
 
         //Se realiza la configuracion inicial del tablero
         //y se asgina un estado a una celula en una posicion invalida
-        GameOfLife game = new GameOfLife(1,1);
+        int rows = 1;
+        int cols = 1;
+        GameOfLife game = new GameOfLife(rows, cols);
         game.setCellStatus(1,1, true);
 
         boolean actual = game.isAlive(1,1);
@@ -69,7 +77,9 @@ public class GameOfLifeTest {
 
     @Test
     public void playGameWithOnlyCell(){
-        GameOfLife game = new GameOfLife(5,5);
+        int rows = 5;
+        int cols = 5;
+        GameOfLife game = new GameOfLife(rows, cols);
         //Configuracion inicial
         //   0 1 2 3 4
         //0  O O O O O
@@ -96,7 +106,9 @@ public class GameOfLifeTest {
 
     @Test
     public void playGameWithSetup1() {
-        GameOfLife game = new GameOfLife(6, 6);
+        int rows = 6;
+        int cols = 6;
+        GameOfLife game = new GameOfLife(rows, cols);
         //Configuracion inicial
         //   0 1 2 3 4 5
         //0  O O O O O 0
@@ -135,7 +147,9 @@ public class GameOfLifeTest {
 
         @Test
         public void playGameWithSetup2(){
-            GameOfLife game = new GameOfLife(5,5);
+            int rows = 5;
+            int cols = 5;
+            GameOfLife game = new GameOfLife(rows, cols);
             //Configuracion inicial
             //   0 1 2 3 4
             //0  O O O O O
