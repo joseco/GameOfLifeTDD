@@ -21,4 +21,8 @@ public class GameOfLife {
     public boolean isAlive(int i, int j) {
         return cells[i][j];
     }
+
+    public void play(){
+        
+    }
 }

@@ -67,4 +67,22 @@ public class GameOfLifeTest {
 
     }
 
+    @Test
+    public void playGameWithOnlyCell(){
+        GameOfLife game = new GameOfLife(5,5);
+        //   0 1 2 3 4
+        //0  O O O O O
+        //1  O O O O O
+        //2  O O 1 O O
+        //3  O O O O O
+        //4  O O O O O
+
+        game.setCellStatus(2,2,true);
+        game.play();
+        boolean actual = game.isAlive(2,2);
+        boolean expected = false;
+
+        Assert.assertEquals(expected, actual);
+    }
+
 }
