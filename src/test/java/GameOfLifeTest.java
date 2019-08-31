@@ -5,9 +5,22 @@ import org.junit.Test;
 
 public class GameOfLifeTest {
 
+    /**
+     * Verifica si los parámetros de la creacion del juego son válidos
+     * para valores que excedan los valores permitidos para un arreglo
+     */
     @Test(expected = IllegalArgumentException.class)
     public void simpleGameSetup(){
         GameOfLife game = new GameOfLife(Integer.MAX_VALUE, Integer.MAX_VALUE);
+    }
+
+    /**
+     * Verifica si los parámetros de la creacion del juego son válidos
+     * para valores negativos
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void simpleGameSetupWithNegativeParameters(){
+        GameOfLife game = new GameOfLife(-1, -1);
     }
 
     @Test
