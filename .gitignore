@@ -10,6 +10,7 @@ build/
 
 .gradle/
 gradle/
+target/
 
 # User-specific stuff
 .idea/**/workspace.xml

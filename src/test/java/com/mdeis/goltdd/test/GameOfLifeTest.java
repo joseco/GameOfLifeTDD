@@ -1,3 +1,4 @@
+package com.mdeis.goltdd.test;
 
 import com.mdeis.goltdd.GameOfLife;
 import org.junit.Assert;
@@ -36,7 +37,7 @@ public class GameOfLifeTest {
         Assert.assertEquals(expected, actual);
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void setupCellAsAliveWithNegativePosition(){
 
         //Se realiza la configuracion inicial del tablero
