@@ -96,4 +96,8 @@ public class GameOfLife {
 
         return counter;
     }
+
+    public boolean[][] getCells(){
+        return cells.clone();
+    }
 }

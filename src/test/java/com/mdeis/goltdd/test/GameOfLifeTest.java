@@ -94,10 +94,9 @@ public class GameOfLifeTest {
         Assert.assertEquals(expected, actual);
     }
 
-
     @Test
-    public void playGameWithSetup1(){
-        GameOfLife game = new GameOfLife(6,6);
+    public void playGameWithSetup1() {
+        GameOfLife game = new GameOfLife(6, 6);
         //Configuracion inicial
         //   0 1 2 3 4 5
         //0  O O O O O 0
@@ -107,10 +106,10 @@ public class GameOfLifeTest {
         //4  O O O O O 0
         //5  O O O O O 0
 
-        game.setCellStatus(2,2,true);
-        game.setCellStatus(2,3,true);
-        game.setCellStatus(3,2,true);
-        game.setCellStatus(3,3,true);
+        game.setCellStatus(2, 2, true);
+        game.setCellStatus(2, 3, true);
+        game.setCellStatus(3, 2, true);
+        game.setCellStatus(3, 3, true);
 
         //   0 1 2 3 4 5
         //0  O O O O O 0
@@ -124,15 +123,82 @@ public class GameOfLifeTest {
 
             game.play();
 
-            boolean actual = game.isAlive(2,2) &&
-                    game.isAlive(2,3) &&
-                    game.isAlive(3,2) &&
-                    game.isAlive(2,3);
+            boolean actual = game.isAlive(2, 2) &&
+                    game.isAlive(2, 3) &&
+                    game.isAlive(3, 2) &&
+                    game.isAlive(2, 3);
             boolean expected = true;
 
             Assert.assertEquals(expected, actual);
         }
-
     }
+
+        @Test
+        public void playGameWithSetup2(){
+            GameOfLife game = new GameOfLife(5,5);
+            //Configuracion inicial
+            //   0 1 2 3 4
+            //0  O O O O O
+            //1  O O 0 O O
+            //2  O 1 1 1 O
+            //3  O O 0 O O
+            //4  O O O O O
+
+            game.setCellStatus(2,1,true);
+            game.setCellStatus(2,2,true);
+            game.setCellStatus(2,3,true);
+
+            // Step 1
+            //   0 1 2 3 4
+            //0  O O O O O
+            //1  O O 1 O O
+            //2  O 0 1 0 O
+            //3  O O 1 O O
+            //4  O O O O O
+
+            game.play();
+
+            boolean[][] expectedAfterOneIteration = {
+                    {false, false, false, false, false},
+                    {false, false, true,  false, false},
+                    {false, false, true,  false, false},
+                    {false, false, true,  false, false},
+                    {false, false, false, false, false},
+            };
+            int expectedNumberOfRows = 5;
+            boolean[][] actual = game.getCells();
+            int actualNumberOfRows = actual.length;
+            Assert.assertEquals(expectedNumberOfRows, actualNumberOfRows);
+            if(actualNumberOfRows == expectedNumberOfRows) {
+                for (int i = 0; i < actualNumberOfRows; i++) {
+                    Assert.assertArrayEquals(expectedAfterOneIteration[i], actual[i]);
+                }
+            }
+
+            // Step 2
+            //   0 1 2 3 4
+            //0  O O O O O
+            //1  O O 0 O O
+            //2  O 1 1 1 O
+            //3  O O 0 O O
+            //4  O O O O O
+            boolean[][] expectedAfterTwoIterations = {
+                    {false, false, false, false, false},
+                    {false, false, false, false, false},
+                    {false, true,  true,  true,  false},
+                    {false, false, false, false, false},
+                    {false, false, false, false, false},
+            };
+            game.play();
+            expectedNumberOfRows = 5;
+            actual = game.getCells();
+            actualNumberOfRows = actual.length;
+            Assert.assertEquals(expectedNumberOfRows, actualNumberOfRows);
+            if(actualNumberOfRows == expectedNumberOfRows) {
+                for (int i = 0; i < actualNumberOfRows; i++) {
+                    Assert.assertArrayEquals(expectedAfterTwoIterations[i], actual[i]);
+                }
+            }
+        }
 
 }
