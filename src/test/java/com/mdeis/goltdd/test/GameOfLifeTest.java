@@ -70,6 +70,7 @@ public class GameOfLifeTest {
     @Test
     public void playGameWithOnlyCell(){
         GameOfLife game = new GameOfLife(5,5);
+        //Configuracion inicial
         //   0 1 2 3 4
         //0  O O O O O
         //1  O O O O O
@@ -82,7 +83,56 @@ public class GameOfLifeTest {
         boolean actual = game.isAlive(2,2);
         boolean expected = false;
 
+        // Resultado esperado
+        //   0 1 2 3 4
+        //0  O O O O O
+        //1  O O O O O
+        //2  O O 0 O O
+        //3  O O O O O
+        //4  O O O O O
+
         Assert.assertEquals(expected, actual);
+    }
+
+
+    @Test
+    public void playGameWithSetup1(){
+        GameOfLife game = new GameOfLife(6,6);
+        //Configuracion inicial
+        //   0 1 2 3 4 5
+        //0  O O O O O 0
+        //1  O O O O O 0
+        //2  O O 1 1 O 0
+        //3  O O 1 1 O 0
+        //4  O O O O O 0
+        //5  O O O O O 0
+
+        game.setCellStatus(2,2,true);
+        game.setCellStatus(2,3,true);
+        game.setCellStatus(3,2,true);
+        game.setCellStatus(3,3,true);
+
+        //   0 1 2 3 4 5
+        //0  O O O O O 0
+        //1  O O O O O 0
+        //2  O O 1 1 O 0
+        //3  O O 1 1 O 0
+        //4  O O O O O 0
+        //5  O O O O O 0
+
+        for (int i = 0; i < 3; i++) {
+
+            game.play();
+
+            boolean actual = game.isAlive(2,2) &&
+                    game.isAlive(2,3) &&
+                    game.isAlive(3,2) &&
+                    game.isAlive(2,3);
+            boolean expected = true;
+
+            Assert.assertEquals(expected, actual);
+        }
+
     }
 
 }
